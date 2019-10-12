@@ -1,0 +1,16 @@
+#!/bin/sh
+
+status=$(systemctl status docker.service |grep 'Active'|awk {'print $2'})
+
+ case $BLOCK_BUTTON in
+     1) sudo systemctl restart docker.service && notify-send "Docker restarting..." ;;
+     3) sudo systemctl stop docker.service && notify-send "Docker stopping..." ;;
+ esac
+
+if [ $status == "active" ]; then
+    icon="🐳"
+else
+    icon="🐨"
+fi
+
+printf "%s\n" "$icon"

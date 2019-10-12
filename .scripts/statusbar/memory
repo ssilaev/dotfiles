@@ -1,0 +1,9 @@
+#!/bin/sh
+
+total=$(free -m|awk 'NR==2{printf "%s/%sMb", $3,$2}')
+
+case $BLOCK_BUTTON in
+	1) notify-send "💻 $total:" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
+esac
+
+printf "%s\n" $(free|awk 'NR==2{printf "%d%", $3*100/$2}')

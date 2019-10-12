@@ -1,0 +1,12 @@
+#!/bin/sh
+
+[ -z "$1" ] && exit
+
+icon="$2"
+[ -z "$2" ] && icon="$1"
+
+case $BLOCK_BUTTON in
+	1) pgrep -x dunst >/dev/null && notify-send "💽 Disk space:" "$(df -h / /store --output=target,used,size)" ;;
+esac
+
+printf "%s 🗄️ %s\n" $(df -h "/" "/store"| awk ' /[0-9]/ {print $5}')

@@ -1,0 +1,63 @@
+command=~/.scripts/statusbar/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+[cmus]
+label=🎵
+interval=3
+
+[ip]
+command=dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+interval=300
+color=#91E78B
+
+[docker]
+interval=15
+
+#[pacpackages]
+#label=📦
+#interval=once
+#signal=8
+
+[torrent]
+interval=20
+signal=7
+
+[weather]
+command=curl -s wttr.in/moscow?format=2
+interval=1800
+color=#A4C2F4
+
+[dollar]
+label=💲 
+interval=3600
+
+[cpu]
+label=🌡 
+interval=15
+
+[memory]
+label=💻 
+interval=20
+
+[disk]
+label=💽 
+command=disk 💽
+interval=120
+
+[volume]
+interval=once
+signal=10
+
+[keymap]
+label=🔤 
+command=xkb-switch -W
+interval=persist
+
+#[battery]
+#command=battery BAT0
+#interval=5
+
+[clock]
+label=📆 
+interval=30
