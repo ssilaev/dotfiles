@@ -1,7 +1,8 @@
 set nocompatible
 filetype off
 syntax on
-colorscheme Tomorrow-Night
+set background=dark
+colorscheme solarized
 
 set regexpengine=1
 set backspace=indent,eol,start
@@ -37,6 +38,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'python/black'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
@@ -71,19 +73,17 @@ map <C-n> :NERDTreeToggle<CR>
 highlight VertSplit ctermbg=NONE
 highlight VertSplit ctermfg=NONE
 "highlight ColorColumn ctermbg=8
-highlight ColorColumn ctermbg=59
+"highlight ColorColumn ctermbg=59
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowBookmarks=0
 let g:NERDTreeWinSize = 24
 "autocmd vimenter * if !argc() | NERDTree | endif
-
 let g:ycm_server_keep_logfiles=1
 let g:ycm_warning_symbol='..'
 let g:ycm_error_symbol='**'
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
-
 " Flake8
 nnoremap <F4> :SyntasticToggleMode<CR>
 let g:syntastic_python_checkers=['flake8']
@@ -99,9 +99,12 @@ let g:ycm_use_ultisnips_completer = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
-let g:indentLine_color_term = 239
-let g:airline_theme='minimalist'
-
+let g:indentLine_color_term = 10
+let g:indent_guides_auto_colors = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='solarized'
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=lightgrey
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=text
 autocmd BufNewFile,BufRead *.html set ft=jinja
 nnoremap <F5> :Black<CR>
