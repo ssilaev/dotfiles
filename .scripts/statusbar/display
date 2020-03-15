@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#case $BLOCK_BUTTON in
+#    3) pgrep -x dunst >/dev/null && notify-send "Battery module:" "🔋: discharging
+#🛑: not charging
+#♻: stagnant charge
+#🔌: charging
+#⚡: charged
+#❗: battery very low!
+#- Text color reflects charge left" ;;
+#esac
+
+xbacklight -get | cut -d'.' -f 1

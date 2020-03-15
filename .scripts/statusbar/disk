@@ -9,4 +9,4 @@ case $BLOCK_BUTTON in
 	1) pgrep -x dunst >/dev/null && notify-send "💽 Disk space:" "$(df -h / /store --output=target,used,size)" ;;
 esac
 
-printf "%s 🗄️ %s\n" $(df -h "/" "/store"| awk ' /[0-9]/ {print $5}')
+printf "💽 %s  🗄️%s  \n" $(df -h "/" "/store"| awk ' /[0-9]/ {print $5}')

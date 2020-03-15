@@ -18,8 +18,8 @@ for_window [instance="dropdown_tmuxdd"] border pixel 3
 for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
-for_window [class="^.*"] border pixel 2
-gaps inner 10
+for_window [class="^.*"] border pixel 3
+gaps inner 10	
 gaps outer 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -58,7 +58,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $term
 
-bindsym $mod+Shift+Return exec thunar
+bindsym $mod+Shift+Return exec nemo
 # split toggle orientation
 bindsym $mod+t split toggle
 
@@ -83,13 +83,11 @@ bindsym $mod+Shift+z    gaps outer current minus 5
 bindsym $mod+x          exec --no-startup-id mpc pause; exec --no-startup-id pauseallmpv ; exec --no-startup-id i3lock -e -f -c 1d2021
 bindsym $mod+b          bar mode toggle
 bindsym $mod+Shift+b    floating toggle; sticky toggle; exec --no-startup-id bottomleft
-bindsym $mod+Shift+t    gaps inner current set 20; gaps outer current set 20
+bindsym $mod+Shift+t    gaps inner current set 10; gaps outer current set 10
 bindsym $mod+y          exec $term -e calcurse -D ~/.config/calcurse
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: term"
-set $ws2 "2: www"
+set $ws1 "1"
+set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -160,8 +158,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # autorun
-exec --no-startup-id $term
-exec --no-startup-id $www
+# exec --no-startup-id $term
+# exec --no-startup-id $www
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -193,36 +191,57 @@ exec --no-startup-id system-config-printer-applet
 exec xkb-switch -W
 exec --no-startup-id setxkbmap -layout us,ru -option grp:switch,grp:caps_toggle,grp_led:caps
 
-font pango:monospace 10
+font pango:DejaVu Sans Mono 11
 
 # Assign Workspaces:
 assign [class="firefox"] $ws2
 assign [class="Chromium"] $ws2
+assign [class="Brave"] $ws2
 
-bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 12\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"Fira Code 12\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym $mod+o exec --no-startup-id "rofi -show ssh -font \\"Fira Code 12\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# client.background #F8F8F2
+
+client.focused          #495D2F #556C36 #FFFFFF #6272A4   #495D2F
+client.focused_inactive #495D2F #42532A #999999 #44475A   #44475A
+client.unfocused        #495D2F #1E1E1E #999999 #282A36   #383838
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background #F8F8F2
+client.background #1e1e1e
 
 bar {
   colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
+    # background #282A36
+    # statusline #F8F8F2
+    # separator  #44475A
 
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    background #1E1E1E
+    statusline #F8F8F2
+    separator  #555555
+    
+    # focused_workspace  #44475A #44475A #F8F8F2
+    # active_workspace   #282A36 #44475A #F8F8F2
+    # inactive_workspace #282A36 #282A36 #BFBFBF
+    # urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    # binding_mode       #FF5555 #FF5555 #F8F8F2
+
+    focused_workspace  #555555 #353535 #EFEFEF
+    active_workspace   #555555 #353535 #EFEFEF
+    inactive_workspace #1e1e1e #1e1e1e #666666
+    urgent_workspace   #FFFFFF #FF5555 #F8F8F2
     binding_mode       #FF5555 #FF5555 #F8F8F2
 }
-    font pango:mono 10
+    # font pango:mono 15
+    font pango:DejaVu Sans Mono 11
     status_command i3blocks
+    height 26
     position top
     mode dock
     modifier None
@@ -230,13 +249,14 @@ bar {
 
 # volume
 bindsym XF86AudioMute exec amixer set Master toggle;  exec pkill  -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill  -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill  -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill -RTMIN+10 i3blocks
+bindsym XF86MonBrightnessDown	exec --no-startup-id sudo xbacklight intel_backlight -dec 5; exec pkill -RTMIN+13 i3blocks
+bindsym XF86MonBrightnessUp	exec --no-startup-id sudo xbacklight intel_backlight -inc 5; exec pkill -RTMIN+13 i3blocks	
 
 bindsym Print                   exec flameshot gui
 bindsym F7                      exec $term -e vim ~/.config/i3/config
 bindsym XF86Sleep               exec --no-startup-id i3lock -c 1d2021 && systemctl hibernate
 bindsym XF86PowerOff            exec --no-startup-id prompt "Shutdown computer?" "$shutdown"
-bindsym $mod+Shift+BackSpace    exec --no-startup-id prompt "Reboot computer?" "$reboot"
-bindsym XF86Search              exec $www;workspace $ws2
+# bindsym $mod+Shift+BackSpace    exec --no-startup-id prompt "Reboot computer?" "$reboot"
 bindsym $mod+Shift+w            exec --no-startup-id "libreoffice --writer"

@@ -2,9 +2,10 @@ command=~/.scripts/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-[cmus]
-label=🎵
-interval=3
+[music]
+label=🎵 
+interval=once
+signal=11
 
 [ip]
 command=dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
@@ -12,51 +13,62 @@ interval=300
 color=#91E78B
 
 [docker]
-interval=15
+color=#0db7ed
+interval=10
 
-#[pacpackages]
-#label=📦
-#interval=once
-#signal=8
-
-[torrent]
-interval=20
-signal=7
+[pacpackages]
+label=📦 
+interval=once
+signal=8
+#min_width=30
+#align=center
 
 [weather]
-command=curl -s wttr.in/moscow?format=2
+command=curl -s wttr.in/moscow?format=1
 interval=1800
 color=#A4C2F4
 
 [dollar]
-label=💲 
+label=💲
 interval=3600
-
-[cpu]
-label=🌡 
-interval=15
-
-[memory]
-label=💻 
-interval=20
-
-[disk]
-label=💽 
-command=disk 💽
-interval=120
-
-[volume]
-interval=once
-signal=10
 
 [keymap]
 label=🔤 
 command=xkb-switch -W
 interval=persist
 
-#[battery]
-#command=battery BAT0
-#interval=5
+[volume]
+interval=once
+signal=10
+
+[display]
+label=🔆 
+interval=once
+signal=13
+
+[battery]
+command=battery BAT0
+interval=5
+
+[dunst]
+markup=pango
+interval=once
+format=json
+min_width=25
+align=center
+#DUNST_MUTE=off
+
+[timer_and_stopwatch]
+format=json
+interval=1
+TIMER_LABEL=tm
+STOPWATCH_LABEL=sw
+#DEFAULT_MODE=timer
+#DEFAULT_STOPWATCH=0
+DEFAULT_TIMER=2700
+PLAY_LABEL=🟢
+PAUSE_LABEL=🔴
+#TIMER_LOOP=true
 
 [clock]
 label=📆 
