@@ -137,6 +137,7 @@ if (( mode == 0 )); then
     bgcolor='#FF0000'
     fgcolor='#000000'
     time=0
+    notify-send "Time is out!" "Sergey, it's time for you to take a break!"
     pause
   elif (( time > 0 )); then
     fgcolor=$(compute_color $time)
