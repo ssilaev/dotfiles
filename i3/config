@@ -18,7 +18,7 @@ for_window [instance="dropdown_tmuxdd"] border pixel 3
 for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 gaps inner 10	
 gaps outer 10
 
@@ -176,7 +176,8 @@ exec --no-startup-id unclutter
 
 exec --no-startup-id autorandr -c
 
-exec "sleep 1;feh --bg-fill ~/wallpapers/andrew-charney-1284276-unsplash.jpg"
+#exec "sleep 1;feh --bg-fill ~/wallpapers/andrew-charney-1284276-unsplash.jpg"
+exec "sleep 1;feh --bg-fill ~/wallpapers/neurons.jpg"
 
 # Starts redshift:
 exec --no-startup-id redshift
@@ -191,7 +192,7 @@ exec --no-startup-id system-config-printer-applet
 exec xkb-switch -W
 exec --no-startup-id setxkbmap -layout us,ru -option grp:switch,grp:caps_toggle,grp_led:caps
 
-font pango:DejaVu Sans Mono 11
+font pango:DejaVu Sans Mono 10
 
 # Assign Workspaces:
 assign [class="firefox"] $ws2
@@ -216,21 +217,33 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background #1e1e1e
 
+#Bar {
+#  colors {
+#    background #1E1E1E
+#    statusline #F8F8F2
+#    separator  #555555
+#    
+#    focused_workspace  #555555 #353535 #EFEFEF
+#    active_workspace   #555555 #353535 #EFEFEF
+#    inactive_workspace #1e1e1e #1e1e1e #666666
+#    urgent_workspace   #FFFFFF #FF5555 #F8F8F2
+#    binding_mode       #FF5555 #FF5555 #F8F8F2
+#}
+#    # font pango:mono 15
+#    font pango:DejaVu Sans Mono 11
+#    #status_command i3blocks
+#    height 26
+#    position top
+#    output HDMI-1
+#    #mode dock
+#    #modifier None
+#}
+
 bar {
   colors {
-    # background #282A36
-    # statusline #F8F8F2
-    # separator  #44475A
-
     background #1E1E1E
     statusline #F8F8F2
     separator  #555555
-    
-    # focused_workspace  #44475A #44475A #F8F8F2
-    # active_workspace   #282A36 #44475A #F8F8F2
-    # inactive_workspace #282A36 #282A36 #BFBFBF
-    # urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    # binding_mode       #FF5555 #FF5555 #F8F8F2
 
     focused_workspace  #555555 #353535 #EFEFEF
     active_workspace   #555555 #353535 #EFEFEF
@@ -239,10 +252,11 @@ bar {
     binding_mode       #FF5555 #FF5555 #F8F8F2
 }
     # font pango:mono 15
-    font pango:DejaVu Sans Mono 11
+    font pango:DejaVu Sans Mono 10
     status_command i3blocks
     height 26
     position top
+    # output eDP-1
     mode dock
     modifier None
 }

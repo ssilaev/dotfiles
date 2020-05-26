@@ -14,6 +14,7 @@ source $HOME/.config/nvim/autocomplete.vim
 source $HOME/.config/nvim/syntastic.vim
 source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/black.vim
+source $HOME/.config/nvim/configurations.vim
 
 colorscheme codedark
 
@@ -49,3 +50,4 @@ function TrimWhiteSpace()
 endfunction
 nnoremap <F2> :call TrimWhiteSpace()<CR>
 nnoremap <F3> :set number!<CR>
+nnoremap <Leader><space> :noh<cr>
