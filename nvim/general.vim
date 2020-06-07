@@ -1,7 +1,14 @@
 set history=500
 set shortmess+=I
+
+" from the https://wiki.python.org/moin/Vim
 set tabstop=8
-set shiftwidth=8
+set expandtab
+set softtabstop=4
+" end form the wiki.python.org
+
+" set tabstop=4
+set shiftwidth=4
 set colorcolumn=88
 set autoindent
 set smartindent

@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -9,9 +10,8 @@ Plug 'preservim/nerdtree'
 Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/TagHighlight' " color highlighting for C
-Plug 'vim-scripts/OmniCppComplete'  " autocompletion tool
+" Plug 'vim-scripts/OmniCppComplete'  " autocompletion tool
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'alvan/vim-closetag'

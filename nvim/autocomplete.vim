@@ -1,12 +1,12 @@
-" auto close options when exiting insert mode or moving away
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-set completeopt=menu,menuone
 
-let OmniCpp_MayCompleteDot = 1 " autocomplete with .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
-let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
-let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
-let OmniCpp_LocalSearchDecl = 1 " don't require special style of function opening braces
+let g:ycm_server_keep_logfiles=1
+let g:ycm_warning_symbol='..'
+let g:ycm_error_symbol='**'
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+

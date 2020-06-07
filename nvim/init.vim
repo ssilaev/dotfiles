@@ -28,6 +28,7 @@ let g:black_linelength = 80
 
 " Use system clipboard
 set clipboard+=unnamedplus
+" set relativenumber
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
