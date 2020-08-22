@@ -1,5 +1,7 @@
 syntax on
 set encoding=utf-8
+set swapfile
+set dir=~/.swapfiles
 
 " Enable true color
 if exists('+termguicolors')
@@ -28,7 +30,6 @@ let g:black_linelength = 80
 
 " Use system clipboard
 set clipboard+=unnamedplus
-" set relativenumber
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -50,5 +51,6 @@ function TrimWhiteSpace()
   '
 endfunction
 nnoremap <F2> :call TrimWhiteSpace()<CR>
-nnoremap <F3> :set number!<CR>
+nnoremap <F3> :set relativenumber! number!<CR>
 nnoremap <Leader><space> :noh<cr>
+nnoremap S :%s//g<Left><Left>

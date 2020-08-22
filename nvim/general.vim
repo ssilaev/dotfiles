@@ -19,12 +19,18 @@ set laststatus=2
 set autochdir
 set nobackup
 set noundofile
+
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 set scrolloff=10
 set nonumber
 set path+=** " search down into subfolders (for tab-complete)
 set wildmenu " display all matching files for tab-complete
 filetype on
-filetype indent on		
+filetype indent on
 " set cursorline
 " set cursorcolumn
 "
