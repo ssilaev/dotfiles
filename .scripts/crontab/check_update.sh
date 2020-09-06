@@ -3,13 +3,13 @@
 
 ping -q -c 1 1.1.1.1 > /dev/null || exit
 
-notify-send "📦 Checking for package updates..."
+notify-send "Checking..." "📦 Checking for package updates..."
 
 sudo pacman -Syy
 
 if pacman -Qu | grep -v "\[ignored\]"
 then
-    notify-send "🎁 Package updates available. Click statusbar icon (📦) for update."
+    notify-send "Updates" "🎁 Package updates available. Click statusbar icon (📦) for update."
 else
-    notify-send "📦 Repository sync complete. No new packages for update."
+    notify-send "Sync complete" "📦 Repository sync complete. No new packages for update."
 fi
