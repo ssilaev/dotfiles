@@ -64,6 +64,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+" Indent Guides
+Plug 'nathanaelkane/vim-indent-guides'
+
 call plug#end()
 
 syntax on
@@ -122,18 +125,17 @@ let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache=1
 
-set ttyfast
-set lazyredraw
+" set ttyfast
+" set lazyredraw
 
-" Indent-guides
-" hi IndentGuidesOdd guibg=#3B3B3B ctermbg=235
-" hi IndentGuidesEven guibg=#343434 ctermbg=236
+" indent-guides
+"let g:indent_guides_auto_colors = 1
+hi IndentGuidesOdd  guibg=#3B3B3B ctermbg=235
+hi IndentGuidesEven guibg=#343434 ctermbg=236
 let g:indent_guides_space_guides = 1
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indentLine_color_term = 10
-let g:indent_guides_auto_colors = 0
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=lightgrey
+" hi IndentGuidesOdd  ctermbg=black
+" hi IndentGuidesEven ctermbg=darkgrey
 
 " Add yaml stuffs
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml " foldmethod=indent
@@ -200,7 +202,6 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 
 " Ycm colors
-" highlight Pmenu ctermfg=15 ctermbg=0 guifg=#aaaaaa guibg=#333233
 highlight Pmenu ctermfg=10 ctermbg=0 guifg=#aaaaaa guibg=#333233
 
 nmap <leader>jj :YcmCompleter GoTo<CR>
@@ -210,9 +211,6 @@ map <leader>jd :YcmCompleter GoToDeclaration<CR>
 
 " Indent guides
 nmap <F6> :IndentGuidesToggle<CR>
-
-let g:indent_guides_enable_on_vim_startup = 0
-let g:indent_guides_auto_colors = 0
 
 " Use system clipboard
 " set clipboard+=unnamedplus
