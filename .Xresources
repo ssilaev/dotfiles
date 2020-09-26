@@ -1,0 +1,13 @@
+Xcursor.size: 14
+
+*foreground: rgb:e5/e5/e5
+*background: rgb:00/00/00
+
+Sxiv.foreground: #bbbbbb
+Sxiv.background: #222222
+
+*VT100.colorBDMode:     true
+*VT100.colorBD:         red
+*VT100.colorULMode:     true
+*VT100.colorUL:         cyan
+*VT100.veryBoldColors: 6

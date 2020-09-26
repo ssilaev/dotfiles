@@ -143,6 +143,7 @@ au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " PSF Black
 let g:black_linelength = 80
+nnoremap <F5> :Black<CR>
 
 " On/off relativenumber
 nmap <F3> :set relativenumber! number!<CR>
@@ -194,7 +195,7 @@ let g:NERDTreeColorMapCustom = {
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " YouCompleteMe
-nmap <F5> :YcmRestartServer<CR>
+" nmap <F5> :YcmRestartServer<CR>
 
 let g:ycm_use_ultisnips_completer = 1
 let g:ycm_seed_identifiers_with_syntax = 1
@@ -214,3 +215,9 @@ nmap <F6> :IndentGuidesToggle<CR>
 
 " Use system clipboard
 " set clipboard+=unnamedplus
+"
+" X copy-paste
+command -range Gy :silent :<line1>,<line2>w !xsel -i -b
+cabbrev gy Gy
+command -range Gp :silent :r !xsel -o -b
+cabbrev gp Gp

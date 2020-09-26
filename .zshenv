@@ -25,9 +25,5 @@ path=(
 
 # Environment Variables
 
-#export PATH="$HOME/.local/bin:$PATH"
-#export GOPATH=$HOME/golib
-#export PATH=$PATH:$GOPATH/bin
-
 export PATH="$HOME/.local/bin:$HOME/jmeter/apache-jmeter-5.3/bin/:$HOME/.cargo/bin:$PATH"
 export GPG_KEY="64D02F3AA9448C0E991A8BDA3E783B51D2119EAE"

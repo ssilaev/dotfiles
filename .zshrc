@@ -5,8 +5,8 @@ export ZSH="/home/ssv/.oh-my-zsh"
 ZSH_THEME="afowler"
 
 plugins=(
-	# direnv
-	# docker
+	direnv
+	docker
 	git
 )
 
@@ -14,7 +14,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 
-alias g='git'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
