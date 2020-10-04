@@ -2,9 +2,11 @@
     name = "Sergey Silaev"
     email = "hello@8am.dev"
 [core]
-    autocrlf = input
+    autocrlf = false
     precomposeunicode = true
     editor = /usr/bin/vim
+[gpg]
+    program = gpg2
 [alias]
     st = status -b
     c = commit
@@ -21,7 +23,11 @@
 [push]
     default=current
 [diff]
-    algorithm = patience
+    algorithmtool = patience
+[difftool "meld"]
+    cmd = meld "$LOCAL $REMOTE"
+[push]
+    default = current
 [color]
     diff = auto
     status = auto
@@ -35,3 +41,12 @@
     untracked = magenta bold
 [color "branch"]
     remote = yellow
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
