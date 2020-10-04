@@ -20,14 +20,12 @@
     wlog = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%an%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
     wdiff = diff --word-diff=color
     wshow = show --word-diff=color
-[push]
-    default=current
 [diff]
     algorithmtool = patience
-[difftool "meld"]
-    cmd = meld "$LOCAL $REMOTE"
 [push]
     default = current
+[pull]
+    rebase = false
 [color]
     diff = auto
     status = auto
