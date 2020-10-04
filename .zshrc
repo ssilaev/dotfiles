@@ -1,12 +1,15 @@
+export PATH="~/bin:$PATH"
+
 ZSH_THEME="afowler"
 
 plugins=(
-	direnv
-	docker
-	git
+    direnv
+    docker
+    git
 )
 
-source $ZSH/oh-my-zsh.sh
+source $OH_MY_ZSH/oh-my-zsh.sh
+source $ZSH_DIR/zshrc
 
 # # ex - archive extractor
 # # usage: ex <file>

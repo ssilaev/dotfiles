@@ -1,0 +1,75 @@
+command=~/.scripts/statusbar/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+# [music]
+# label=🎵
+# interval=once
+# signal=11
+
+[ip]
+command=dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+interval=300
+color=#91E78B
+
+[docker]
+color=#0db7ed
+interval=10
+
+[pacpackages]
+label=📦 
+interval=once
+signal=8
+min_width=25
+align=center
+
+[weather]
+command=curl -s wttr.in/moscow?format=1
+interval=1800
+color=#A4C2F4
+
+[dollar]
+label=💲
+interval=3600
+
+[keymap]
+label=🔤 
+command=xkb-switch -W
+interval=persist
+
+[volume]
+interval=once
+signal=10
+
+[display]
+label=🔆
+interval=once
+signal=13
+
+[battery]
+#command=battery
+interval=10
+
+[dunst]
+markup=pango
+interval=once
+format=json
+min_width=25
+align=center
+#DUNST_MUTE=off
+
+[timer_and_stopwatch]
+format=json
+interval=1
+TIMER_LABEL=tm
+STOPWATCH_LABEL=sw
+#DEFAULT_MODE=timer
+#DEFAULT_STOPWATCH=0
+DEFAULT_TIMER=2700
+PLAY_LABEL=🟢
+PAUSE_LABEL=🔴
+#TIMER_LOOP=true
+
+[clock]
+label=📆 
+interval=30
