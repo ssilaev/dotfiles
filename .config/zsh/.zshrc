@@ -1,4 +1,13 @@
-export PATH="~/bin:$PATH"
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Basic auto/tab complete:
+autoload -U compinit -d ${XDG_CACHE_HOME}/zsh
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)   # Include hidden files.
 
 ZSH_THEME="afowler"
 
@@ -6,10 +15,23 @@ plugins=(
     direnv
     docker
     git
+    npm
+    gradle
+    pod
+    pip
+    ng
+    aws
 )
 
-source $OH_MY_ZSH/oh-my-zsh.sh
-source $ZSH_DIR/zshrc
+source ~/.oh-my-zsh/oh-my-zsh.sh
+
+# Enable colors and change prompt:
+autoload -U colors && colors	# Load colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+setopt autocd		# Automatically cd into typed directory.
+stty stop undef		# Disable ctrl-s to freeze terminal.
+
+export PATH="~/bin:$PATH"
 
 # # ex - archive extractor
 # # usage: ex <file>

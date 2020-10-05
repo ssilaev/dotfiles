@@ -4,7 +4,7 @@ import time
 
 time.sleep(1)
 
-r = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
+r = requests.get("https://www.cbr-xml-daily.ru/daily_json.js")
 
 if r.status_code == 200:
     try:
@@ -14,4 +14,4 @@ if r.status_code == 200:
 else:
     print(r.status_code)
 
-print (round(data['Valute']['USD']['Value'], 2))
+print(round(data["Valute"]["USD"]["Value"], 2))

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 total=$(free -m|awk 'NR==2{printf "%s/%sMb", $3,$2}')
 
