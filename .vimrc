@@ -1,3 +1,10 @@
+" Environment
+" set directory=$XDG_CACHE_HOME/vim,~/,/tmp
+" set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+" set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+" set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+" let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+
 call plug#begin('~/.vim/plugged')
 
 " Cool git plugin
@@ -79,7 +86,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-" set colorcolumn=88
+set colorcolumn=80
 " set termguicolors
 set scrolloff=8
 set tw=0 wm=0
@@ -197,7 +204,7 @@ let g:NERDTreeIgnore = ['^node_modules$']
 " YouCompleteMe
 " nmap <F5> :YcmRestartServer<CR>
 
-let g:ycm_use_ultisnips_completer = 1
+" let g:ycm_use_ultisnips_completer = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
@@ -208,7 +215,7 @@ highlight Pmenu ctermfg=10 ctermbg=0 guifg=#aaaaaa guibg=#333233
 nmap <leader>jj :YcmCompleter GoTo<CR>
 nmap <leader>jr :YcmCompleter GoToReferences<CR>
 nmap <leader>jf :YcmCompleter GoToDefinition<CR>
-map <leader>jd :YcmCompleter GoToDeclaration<CR>
+nmap <leader>jd :YcmCompleter GoToDeclaration<CR>
 
 " Indent guides
 nmap <F6> :IndentGuidesToggle<CR>
@@ -221,3 +228,13 @@ command -range Gy :silent :<line1>,<line2>w !xsel -i -b
 cabbrev gy Gy
 command -range Gp :silent :r !xsel -o -b
 cabbrev gp Gp
+
+" Navigate 4x faster when holding down Ctrl
+nmap <c-j> 4j
+nmap <c-k> 4k
+nmap <c-h> 4h
+nmap <c-l> 4l
+nmap <c-Down> 4<Down>
+nmap <c-Up> 4<Up>
+nmap <c-Left> b
+nmap <c-Right> e

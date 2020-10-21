@@ -17,7 +17,7 @@ path=(
 
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 export TERMINAL="alacritty"
-export TERM="alacritty"
+export TERM="xterm-256color"
 export EDITOR="vim"
 export VISUAL='vim'
 export BROWSER="firefox"

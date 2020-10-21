@@ -31,7 +31,9 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
+export TERM="xterm-256color"
 export PATH="~/bin:$PATH"
+export PATH="$PATH:${HOME}/jmeter/apache-jmeter-5.3/bin/"
 
 # # ex - archive extractor
 # # usage: ex <file>
