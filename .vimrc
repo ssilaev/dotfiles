@@ -1,10 +1,3 @@
-" Environment
-" set directory=$XDG_CACHE_HOME/vim,~/,/tmp
-" set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
-" set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-" set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
-" let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
-
 call plug#begin('~/.vim/plugged')
 
 " Cool git plugin
@@ -15,7 +8,7 @@ Plug 'Valloric/YouCompleteMe'
 
 " Syntax checking plugin
 Plug 'vim-syntastic/syntastic'
-"
+
 " It shows which lines have been added, modified, or removed.
 Plug 'airblade/vim-gitgutter'
 
@@ -55,8 +48,8 @@ Plug 'junegunn/fzf.vim'
 " Simpler way to use some motions
 Plug 'easymotion/vim-easymotion'
 
-" Vim colorschemes
-Plug 'flazz/vim-colorschemes'
+" Vim solarized colorscheme
+Plug 'altercation/vim-colors-solarized'
 
 " A collection of language packs for Vim.
 Plug 'sheerun/vim-polyglot'
@@ -72,7 +65,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " Indent Guides
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -86,28 +79,30 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set colorcolumn=80
-" set termguicolors
-set scrolloff=8
+set colorcolumn=120
+set scrolloff=10
 set tw=0 wm=0
 set backspace=indent,eol,start
+set foldlevelstart=99
+set wrap!
 set smartindent
 set cindent
 set wildmenu
 set autochdir
 set nobackup
 set nonumber
-set background=dark
-let g:seoul256_background = 234
-colorscheme seoul256
+set incsearch
+set hlsearch
+set number
+set background=light
+
+let g:solarized_termcolors=256
+colorscheme solarized
+
 hi Normal guibg=NONE ctermbg=NONE
 
 au BufRead,BufNewFile *.txt,*.md set tw=0 wm=0
-" au BufNewFile,BufRead *.html set ft=jinja
-
-" set incsearch
-set hlsearch
-set number relativenumber
+au BufNewFile,BufRead *.html set ft=jinja
 
 " bash-like TAB completion
 set wildmode=longest,list
@@ -127,33 +122,26 @@ hi vertsplit guifg=bg guibg=darkgrey
 au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
 
 " vim-airline
-let g:airline_theme = 'seoul256'
-let g:airline_powerline_fonts = 0
+let g:airline_theme = 'solarized'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache=1
 
-" set ttyfast
-" set lazyredraw
-
-" indent-guides
-"let g:indent_guides_auto_colors = 1
-hi IndentGuidesOdd  guibg=#3B3B3B ctermbg=235
-hi IndentGuidesEven guibg=#343434 ctermbg=236
-let g:indent_guides_space_guides = 1
-let g:indent_guides_enable_on_vim_startup = 1
-" hi IndentGuidesOdd  ctermbg=black
-" hi IndentGuidesEven ctermbg=darkgrey
-
-" Add yaml stuffs
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml " foldmethod=indent
+" Exception for C, Go and yaml
+au! BufNewFile,BufReadPost *.{c,h} set filetype=c
+au! BufNewFile,BufReadPost *.{go} set filetype=go
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+au FileType c setlocal noexpandtab
+au FileType c setlocal noexpandtab
 au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " PSF Black
-let g:black_linelength = 80
+let g:black_linelength = 120
 nnoremap <F5> :Black<CR>
 
 " On/off relativenumber
-nmap <F3> :set relativenumber! number!<CR>
+" nmap <F3> :set relativenumber! number!<CR>
+nmap <F3> :set number!<CR>
 
 function TrimWhiteSpace()
   %s/\s*$//
@@ -163,11 +151,16 @@ nmap <F2> :call TrimWhiteSpace()<CR>
 
 " Syntastic
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,E225'
+" let g:syntastic_python_flake8_args='--ignore=E501,E225,W503,W504'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 nnoremap <F4> :SyntasticToggleMode<CR>
 
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
+" nmap <F8> :TagbarToggle<CR>
 
 " Find and replace
 nmap S :%s//g<Left><Left>
@@ -184,45 +177,35 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 nmap <C-f> :NERDTreeToggle<CR>
 
-let g:NERDTreeWinSize = 24
+let g:NERDTreeWinSize = 30
 let g:NERDTreeGitStatusWithFlags = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:NERDTreeGitStatusNodeColorization = 1
 let g:NERDTreeColorMapCustom = {
-    \ "Staged"    : "#0ee375",
-    \ "Modified"  : "#d9bf91",
-    \ "Renamed"   : "#51C9FC",
-    \ "Untracked" : "#FCE77C",
-    \ "Unmerged"  : "#FC51E6",
-    \ "Dirty"     : "#FFBD61",
-    \ "Clean"     : "#87939A",
-    \ "Ignored"   : "#808080"
-    \ }
+  \ "Staged"	: "#0ee375",
+  \ "Modified"	: "#d9bf91",
+  \ "Renamed"	: "#51C9FC",
+  \ "Untracked" : "#FCE77C",
+  \ "Unmerged"	: "#FC51E6",
+  \ "Dirty"		: "#FFBD61",
+  \ "Clean"		: "#87939A",
+  \ "Ignored"	: "#808080"
+  \ }
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " YouCompleteMe
 " nmap <F5> :YcmRestartServer<CR>
 
-" let g:ycm_use_ultisnips_completer = 1
-let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 
-" Ycm colors
-highlight Pmenu ctermfg=10 ctermbg=0 guifg=#aaaaaa guibg=#333233
+nmap <leader>j :YcmCompleter GoTo<CR>
+nmap <leader>r :YcmCompleter GoToReferences<CR>
+nmap <leader>f :YcmCompleter GoToDefinition<CR>
+nmap <leader>d :YcmCompleter GoToDeclaration<CR>
+nmap <leader>t :YcmCompleter GetType<CR>
 
-nmap <leader>jj :YcmCompleter GoTo<CR>
-nmap <leader>jr :YcmCompleter GoToReferences<CR>
-nmap <leader>jf :YcmCompleter GoToDefinition<CR>
-nmap <leader>jd :YcmCompleter GoToDeclaration<CR>
-
-" Indent guides
-nmap <F6> :IndentGuidesToggle<CR>
-
-" Use system clipboard
-" set clipboard+=unnamedplus
-"
 " X copy-paste
 command -range Gy :silent :<line1>,<line2>w !xsel -i -b
 cabbrev gy Gy

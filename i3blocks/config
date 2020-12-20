@@ -1,36 +1,48 @@
-command=~/.scripts/statusbar/$BLOCK_NAME
+command=$HOME/.scripts/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-#[music]
-#label=🎵 
-#interval=once
-#signal=11
-
 [ip]
+label=💻 
 command=dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
 interval=300
-color=#91E78B
+color=#ffffff
 
-#[docker]
-#color=#0db7ed
-#interval=10
+[cpu]
+label=🌡️
+color=#ff1919
+interval=5
 
-#[pacpackages]
-#label=📦
-#interval=once
-#signal=8
-#min_width=25
-#align=center
+[memory]
+label=<b>Mem</b>:
+after=%
+color=#91e78b
+interval=10
+
+[docker]
+color=#0db7ed
+interval=10
+
+[pacpackages]
+interval=once
+signal=8
+min_width=25
+align=center
 
 [weather]
 command=curl -s wttr.in/moscow?format=1
 interval=1800
 color=#A4C2F4
 
-[dollar]
-label=💲
+[euro]
+label=<b>€</b> 
 interval=3600
+color=#11ff00
+
+[dollar]
+label=<b>$</b> 
+interval=3600
+color=#11ff00
 
 [keymap]
 label=🔤 
@@ -41,14 +53,13 @@ interval=persist
 interval=once
 signal=10
 
-#[display]
-#label=🔆 
-#interval=once
-#signal=13
+[display]
+label=🔆
+interval=once
+signal=13
 
-#[battery]
-#command=battery BAT0
-#interval=5
+[battery]
+interval=10
 
 [dunst]
 markup=pango

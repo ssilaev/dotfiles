@@ -27,13 +27,15 @@ source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# PS1="%B%{$fg[cyan]%}[%{$fg[green]%}% $ %{$fg[blue]%}%~%{$fg[cyan]%}]%{$reset_color%}$%b "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
 export TERM="xterm-256color"
 export PATH="~/bin:$PATH"
 export PATH="$PATH:${HOME}/jmeter/apache-jmeter-5.3/bin/"
+export PATH="$PATH:${CARGO_HOME}/bin/"
 
 # # ex - archive extractor
 # # usage: ex <file>
@@ -62,6 +64,8 @@ ex ()
 tldr() {
   curl "cheat.sh/$@"
 }
+
+# source `which activate.sh`
 
 # Aliases
 alias diff='diff --color=auto'
