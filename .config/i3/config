@@ -1,4 +1,4 @@
-# vit: filetype=i3
+# filetype=i3
 
 set $term --no-startup-id $TERMINAL
 set $www --no-startup-id $BROWSER
@@ -17,7 +17,7 @@ for_window [instance="dropdown_tmuxdd"] border pixel 3
 for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 10
 gaps outer 10
 
@@ -74,11 +74,11 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+s          gaps inner current plus 5
-bindsym $mod+Shift+s    gaps inner current minus 5
+bindsym $mod+s          gaps inner current plus 10
+bindsym $mod+Shift+s    gaps inner current minus 10
 bindsym $mod+Shift+d    gaps inner current set 0; gaps outer current set 0
-bindsym $mod+z          gaps outer current plus 5
-bindsym $mod+Shift+z    gaps outer current minus 5
+bindsym $mod+z          gaps outer current plus 10
+bindsym $mod+Shift+z    gaps outer current minus 10
 bindsym $mod+x          exec --no-startup-id mpc pause; exec --no-startup-id pauseallmpv ; exec --no-startup-id i3lock -e -f -c 1d2021
 bindsym $mod+b          bar mode toggle
 bindsym $mod+Shift+b    floating toggle; sticky toggle; exec --no-startup-id bottomleft
@@ -131,24 +131,24 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Want to exit i3?' -B 'Yes, e
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
+# same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+# back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -169,6 +169,7 @@ exec --no-startup-id dunst
 
 # composite manager:
 exec --no-startup-id xcompmgr
+# exec picom -f -i 1
 
 # Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
@@ -176,7 +177,8 @@ exec --no-startup-id unclutter
 exec --no-startup-id autorandr -c
 
 # Background picture
-exec "sleep 1;feh --bg-fill ~/wallpapers/neurons.jpg"
+#exec "sleep 1;feh --bg-fill ~/wallpapers/neurons.jpg"
+exec nitrogen --restore
 
 # Starts redshift:
 exec --no-startup-id redshift
@@ -185,7 +187,7 @@ exec --no-startup-id redshift
 exec --no-startup-id blueman-applet
 
 # Starts printer applet
-exec --no-startup-id system-config-printer-applet
+# exec --no-startup-id system-config-printer-applet
 
 # Flameshot
 exec --no-startup-id flameshot
@@ -194,7 +196,7 @@ exec --no-startup-id flameshot
 exec xkb-switch -W
 exec --no-startup-id setxkbmap -layout us,ru -option grp:switch,grp:caps_toggle,grp_led:caps
 
-font pango:Droid Sans Mono Slashed for Powerline 10
+font pango:Droid Sans Mono Slashed for Powerline 8
 
 # Assign Workspaces:
 assign [class="firefox"] $ws2
@@ -205,19 +207,19 @@ bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"Droid Sans Mono Sl
 bindsym $mod+o exec --no-startup-id "rofi -show ssh -font \\"Droid Sans Mono Slashed for Powerline 16\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 
 # class                 border  backgr. text    indicator child_border
-# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-# client.background #F8F8F2
-
-client.focused          #495D2F #556C36 #FFFFFF #6272A4   #495D2F
-client.focused_inactive #495D2F #42532A #999999 #44475A   #44475A
-client.unfocused        #495D2F #1E1E1E #999999 #282A36   #383838
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background #1e1e1e
+client.background #F8F8F2
+
+# client.focused          #495D2F #556C36 #FFFFFF #6272A4   #495D2F
+# client.focused_inactive #495D2F #42532A #999999 #44475A   #44475A
+# client.unfocused        #495D2F #1E1E1E #999999 #282A36   #383838
+# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# client.background #1e1e1e
 
 #bar {
 #  colors {
@@ -242,24 +244,30 @@ client.background #1e1e1e
 #}
 
 bar {
-  colors {
-    background #1E1E1E
-    statusline #F8F8F2
-    separator  #555555
+    # colors {
+    #     background #1E1E1E
+    #         statusline #F8F8F2
+    #         separator  #555555
+    #
+    #         focused_workspace  #555555 #353535 #EFEFEF
+    #         active_workspace   #555555 #353535 #EFEFEF
+    #         inactive_workspace #1e1e1e #1e1e1e #666666
+    #         urgent_workspace   #FFFFFF #FF5555 #F8F8F2
+    #         binding_mode       #FF5555 #FF5555 #F8F8F2
+    # }
+     colors {
+       background #1E1E1E
+       statusline #F8F8F2
+       separator  #555555
 
-    focused_workspace  #555555 #353535 #EFEFEF
-    active_workspace   #555555 #353535 #EFEFEF
-    inactive_workspace #1e1e1e #1e1e1e #666666
-    urgent_workspace   #FFFFFF #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
-}
-    font pango:Droid Sans Mono Slashed for Powerline 11
+       focused_workspace  #555555 #353535 #EFEFEF
+       active_workspace   #555555 #353535 #EFEFEF
+       inactive_workspace #1e1e1e #1e1e1e #666666
+       urgent_workspace   #FFFFFF #FF5555 #F8F8F2
+       binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
     status_command i3blocks
-    height 26
-    position top
-    # output eDP-1
-    mode dock
-    modifier None
+        position top
 }
 
 # volume

@@ -16,10 +16,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 
-" Status/tabline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " CtrlP matcher based on python
 Plug 'FelikZ/ctrlp-py-matcher'
 
@@ -64,14 +60,17 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-" Indent Guides
-" Plug 'nathanaelkane/vim-indent-guides'
+" Challenger Deep Theme
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 call plug#end()
 
 syntax on
 filetype plugin indent on
 
+set term=xterm-256color
+" set termguicolors         " Enable GUI colors for the terminal to get truecolor
+set t_Co=256                " Enable 256 colors
 set history=500
 set shortmess+=I
 set nocompatible
@@ -79,7 +78,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set colorcolumn=120
 set scrolloff=10
 set tw=0 wm=0
 set backspace=indent,eol,start
@@ -94,11 +92,9 @@ set nonumber
 set incsearch
 set hlsearch
 set number
-set background=light
 
-let g:solarized_termcolors=256
-colorscheme solarized
-
+" colorscheme challenger_deep
+colorscheme deus
 hi Normal guibg=NONE ctermbg=NONE
 
 au BufRead,BufNewFile *.txt,*.md set tw=0 wm=0
@@ -120,12 +116,6 @@ hi Search guibg=peru guifg=wheat
 hi vertsplit guifg=bg guibg=darkgrey
 
 au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
-
-" vim-airline
-let g:airline_theme = 'solarized'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_highlighting_cache=1
 
 " Exception for C, Go and yaml
 au! BufNewFile,BufReadPost *.{c,h} set filetype=c
@@ -160,7 +150,7 @@ let g:syntastic_check_on_wq = 1
 nnoremap <F4> :SyntasticToggleMode<CR>
 
 " Tagbar
-" nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Find and replace
 nmap S :%s//g<Left><Left>
@@ -182,14 +172,14 @@ let g:NERDTreeGitStatusWithFlags = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:NERDTreeGitStatusNodeColorization = 1
 let g:NERDTreeColorMapCustom = {
-  \ "Staged"	: "#0ee375",
-  \ "Modified"	: "#d9bf91",
-  \ "Renamed"	: "#51C9FC",
+  \ "Staged"    : "#0ee375",
+  \ "Modified"  : "#d9bf91",
+  \ "Renamed"   : "#51C9FC",
   \ "Untracked" : "#FCE77C",
-  \ "Unmerged"	: "#FC51E6",
-  \ "Dirty"		: "#FFBD61",
-  \ "Clean"		: "#87939A",
-  \ "Ignored"	: "#808080"
+  \ "Unmerged"  : "#FC51E6",
+  \ "Dirty"             : "#FFBD61",
+  \ "Clean"             : "#87939A",
+  \ "Ignored"   : "#808080"
   \ }
 
 let g:NERDTreeIgnore = ['^node_modules$']
