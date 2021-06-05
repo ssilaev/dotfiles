@@ -15,6 +15,12 @@ Plug 'airblade/vim-gitgutter'
 " NERDTree file browsing
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Status/tabline
+Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 " CtrlP matcher based on python
 Plug 'FelikZ/ctrlp-py-matcher'
@@ -60,8 +66,23 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-" Challenger Deep Theme
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+" All Hail TPope
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-dadbod'
+
+" Calm the ADHD
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+" Misc
+Plug 'francoiscabrol/ranger.vim'
+
+" Nord-vim
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -93,8 +114,7 @@ set incsearch
 set hlsearch
 set number
 
-" colorscheme challenger_deep
-colorscheme deus
+colorscheme nord
 hi Normal guibg=NONE ctermbg=NONE
 
 au BufRead,BufNewFile *.txt,*.md set tw=0 wm=0
@@ -184,6 +204,12 @@ let g:NERDTreeColorMapCustom = {
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
+" vim-airline
+" let g:airline_theme = 'base16_nord'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_highlighting_cache=1
+
 " YouCompleteMe
 " nmap <F5> :YcmRestartServer<CR>
 
@@ -192,7 +218,8 @@ let g:ycm_complete_in_strings = 1
 
 nmap <leader>j :YcmCompleter GoTo<CR>
 nmap <leader>r :YcmCompleter GoToReferences<CR>
-nmap <leader>f :YcmCompleter GoToDefinition<CR>
+" nmap <leader>f :YcmCompleter GoToDefinition<CR>
+nmap gf :YcmCompleter GoToDefinition<CR>
 nmap <leader>d :YcmCompleter GoToDeclaration<CR>
 nmap <leader>t :YcmCompleter GetType<CR>
 
